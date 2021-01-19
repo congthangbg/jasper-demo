@@ -4,6 +4,7 @@
 package tuanlm.fpt.spring.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ import tuanlm.fpt.spring.service.ReportService;
 public class ReportController {
 	private ReportService reportService;
 	
-	@GetMapping("pdf-report")
+	@GetMapping(value = "pdf-report", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<byte[]> getPDFReport() {
 		try {
 			return new ResponseEntity<byte[]>(reportService.generatePDFReport(), HttpStatus.OK);
@@ -31,6 +32,5 @@ public class ReportController {
 			e.printStackTrace();
 			return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c06c4cb-2da0-4bb2-ae67-8415b1c6e52b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="createdBy" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="gender" class="java.lang.Integer"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="salary" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="-12" y="0" width="92" height="20" uuid="a02398bb-cfc6-470d-939d-ae9802eeb322"/>
+				<textFieldExpression><![CDATA[$P{createdBy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="10" width="140" height="30" uuid="14491c37-38dd-49ad-8a51-976c0d49a19b"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[My Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="40" height="16" uuid="7692286a-d27e-44d1-95ea-5d961c4cbc8a"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="60" width="70" height="16" uuid="a102bb42-5176-4a74-8a36-655039c1527b"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="60" width="90" height="16" uuid="1c6d12e9-d2a6-4a11-a75f-a8cb5695f60b"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="60" width="100" height="14" uuid="66bfd212-70bc-4797-88f1-69f1e12b93b6"/>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="142" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="11" width="40" height="20" uuid="9ebf2ce1-a959-4076-8741-54b6e0b593bd"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="9" width="70" height="22" uuid="3307438f-cff4-4aa2-89c4-5412061818d2"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="11" width="90" height="20" uuid="b28f1e5a-c6b5-4b3f-8d92-b6627b5f6f57"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="9" width="98" height="20" uuid="358e61ed-4173-4785-9e9c-07653054cc90"/>
+				<textFieldExpression><![CDATA[$F{gender} == 0 ? "Female" : "Male"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
