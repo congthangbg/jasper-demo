@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import tuanlm.fpt.spring.service.ReportService;
 
 /**
@@ -20,12 +19,18 @@ import tuanlm.fpt.spring.service.ReportService;
 @RestController
 @RequestMapping("api/v1/report")
 @AllArgsConstructor
-@NoArgsConstructor
 public class ReportController {
-	ReportService reportService;
+	private ReportService reportService;
 	
 	@GetMapping("pdf-report")
 	public ResponseEntity<byte[]> getPDFReport() {
-		return new ResponseEntity<byte[]>(HttpStatus.OK);
+		try {
+			return new ResponseEntity<byte[]>(reportService.generatePDFReport(), HttpStatus.OK);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
 	}
 }
