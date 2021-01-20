@@ -27,6 +27,7 @@ public class ReportController {
 	public ResponseEntity<byte[]> getPDFReport() {
 		try {
 			return new ResponseEntity<byte[]>(reportService.generatePDFReport(), HttpStatus.OK);
+//			return new ResponseEntity<byte[]>(HttpStatus.OK);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

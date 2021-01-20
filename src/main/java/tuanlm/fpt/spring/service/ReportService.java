@@ -22,9 +22,7 @@ import tuanlm.fpt.spring.entity.Employee;
 public class ReportService {
 	
 	public byte[] generatePDFReport() throws JRException, IOException {
-		System.out.println(ResourceUtils.getFile("classpath:demo.jasper").getAbsolutePath());
 		JasperReport jasperReport = JasperCompileManager.compileReport(ResourceUtils.getFile("classpath:demo.jrxml").getAbsolutePath());
-//		JasperReport jasperReport = JasperCompileManager.compileReport(new ClassPathResource("demo.jrxml").getInputStream());
 		
 		List<Employee> list = new ArrayList<>();
 		list.add(new Employee(0, "Lê Minh Tuấn", 1, "Bình Dương", (float) 100.5));
@@ -38,6 +36,8 @@ public class ReportService {
 		parameters.put("createdBy", "TuanLM15"); 
 		
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+		
+		JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Admin\\Desktop" + "\\demo.pdf");
 
 		return JasperExportManager.exportReportToPdf(jasperPrint);
 	}
